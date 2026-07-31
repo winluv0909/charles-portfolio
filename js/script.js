@@ -194,9 +194,10 @@ projectImages.forEach((img) => {
 
     img.addEventListener("click", () => {
 
-        lightbox.style.display = "flex";
         lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
+lightboxImg.alt = img.alt;
+lightboxImg.style.display = "block";
+lightbox.style.display = "flex";
 
     });
 
@@ -205,6 +206,8 @@ projectImages.forEach((img) => {
 closeBtn.addEventListener("click", () => {
 
     lightbox.style.display = "none";
+lightboxImg.src = "";
+lightboxImg.style.display = "none";
 
 });
 
@@ -217,3 +220,4 @@ lightbox.addEventListener("click", (e) => {
     }
 
 });
+
