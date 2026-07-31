@@ -914,3 +914,211 @@ nav a:hover::after{
     border-color:#7c5cff;
 
 }
+
+.project-status{
+    position:absolute;
+    top:20px;
+    right:20px;
+    background:#22c55e;
+    color:#fff;
+    padding:8px 16px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:600;
+    box-shadow:0 10px 25px rgba(34,197,94,.35);
+}
+
+.project-image{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+}
+
+.project-image img{
+    transition:.6s;
+}
+
+.project-card:hover .project-image img{
+    transform:scale(1.08);
+}
+
+.project-info{
+    display:flex;
+    gap:40px;
+    margin:25px 0;
+}
+
+.project-info strong{
+    display:block;
+    color:#7c5cff;
+    margin-bottom:6px;
+}
+
+.project-info p{
+    color:#bcbcbc;
+}
+
+.project-buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+/* ==========================
+   PROJECT DETAILS PAGE
+========================== */
+
+.project-hero{
+
+    position:relative;
+
+    height:100vh;
+
+    overflow:hidden;
+
+}
+
+.project-hero img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        rgba(0,0,0,.75),
+        rgba(9,9,11,.95)
+    );
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    padding:0 10%;
+
+}
+
+.overlay h1{
+
+    font-size:64px;
+
+    margin:20px 0;
+
+}
+
+.overlay p{
+
+    max-width:700px;
+
+    color:#d4d4d4;
+
+    line-height:1.8;
+
+    margin-bottom:40px;
+
+}
+
+.project-details{
+
+    padding:120px 10%;
+
+}
+
+.project-details h2{
+
+    margin-top:60px;
+
+    margin-bottom:20px;
+
+    color:#7c5cff;
+
+}
+
+.project-details p{
+
+    color:#cfcfcf;
+
+    line-height:1.9;
+
+}
+
+.feature-list{
+
+    margin-top:20px;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:15px;
+
+    list-style:none;
+
+}
+
+.feature-list li{
+
+    background:#17171b;
+
+    padding:18px;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+}
+
+.feature-list li:hover{
+
+    transform:translateY(-5px);
+
+    background:#22222a;
+
+}
+
+/* =======================
+   PROJECT GALLERY
+======================= */
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:25px;
+
+    margin-top:40px;
+
+}
+
+.gallery img{
+
+    width:100%;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+
+}
+
+.gallery img:hover{
+
+    transform:translateY(-10px) scale(1.03);
+
+}
