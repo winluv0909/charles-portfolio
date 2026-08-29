@@ -1,99 +1,111 @@
+// =======================
+// TYPING ANIMATION
+// =======================
+
 const roles = [
     "SAP HCM SuccessFactors Expert",
     "IT System Specialist",
     "Web Developer",
     "HRIS Global IT",
     "Technical Support"
-    
-    
 ];
-
-let roleIndex = 0;
-let charIndex = 0;
-let deleting = false;
 
 const typing = document.getElementById("typing");
 
-function type(){
+if (typing) {
 
-    const current = roles[roleIndex];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
 
-    if(!deleting){
+    function type() {
 
-        typing.textContent = current.substring(0,charIndex++);
+        const current = roles[roleIndex];
 
-        if(charIndex > current.length){
+        if (!deleting) {
 
-            deleting = true;
+            typing.textContent = current.substring(0, charIndex++);
 
-            setTimeout(type,1500);
+            if (charIndex > current.length) {
 
-            return;
+                deleting = true;
 
-        }
+                setTimeout(type, 1500);
 
-    }else{
-
-        typing.textContent = current.substring(0,charIndex--);
-
-        if(charIndex < 0){
-
-            deleting = false;
-
-            roleIndex++;
-
-            if(roleIndex >= roles.length){
-
-                roleIndex = 0;
-
+                return;
             }
 
+        } else {
+
+            typing.textContent = current.substring(0, charIndex--);
+
+            if (charIndex < 0) {
+
+                deleting = false;
+
+                roleIndex++;
+
+                if (roleIndex >= roles.length) {
+                    roleIndex = 0;
+                }
+            }
         }
 
+        setTimeout(type, deleting ? 40 : 90);
     }
 
-    setTimeout(type,deleting ? 40 : 90);
-
+    type();
 }
 
-type();
 
-// Copy Email
+// =======================
+// COPY EMAIL
+// =======================
 
 const copyBtn = document.getElementById("copyEmail");
 const copyMessage = document.getElementById("copyMessage");
 
-copyBtn.addEventListener("click", () => {
+if (copyBtn && copyMessage) {
 
-    navigator.clipboard.writeText("charleswgarcia09@gmail.com");
+    copyBtn.addEventListener("click", () => {
 
-    copyMessage.classList.add("show");
+        navigator.clipboard.writeText("charleswgarcia09@gmail.com");
 
-    setTimeout(() => {
+        copyMessage.classList.add("show");
 
-        copyMessage.classList.remove("show");
+        setTimeout(() => {
+            copyMessage.classList.remove("show");
+        }, 2000);
 
-    }, 2000);
+    });
 
-});
+}
 
-// Navbar Scroll Effect
+
+// =======================
+// NAVBAR SCROLL EFFECT
+// =======================
 
 const navbar = document.querySelector(".navbar");
 
-window.addEventListener("scroll", () => {
+if (navbar) {
 
-    if(window.scrollY > 50){
+    window.addEventListener("scroll", () => {
 
-        navbar.classList.add("scrolled");
+        if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
 
-    }else{
+    });
 
-        navbar.classList.remove("scrolled");
+}
 
-    }
 
-});
+// =======================
+// ACTIVE NAVIGATION
+// =======================
 
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
@@ -105,12 +117,9 @@ window.addEventListener("scroll", () => {
     sections.forEach(section => {
 
         const sectionTop = section.offsetTop - 120;
-        const sectionHeight = section.offsetHeight;
 
-        if(window.scrollY >= sectionTop){
-
+        if (window.scrollY >= sectionTop) {
             current = section.getAttribute("id");
-
         }
 
     });
@@ -119,15 +128,17 @@ window.addEventListener("scroll", () => {
 
         link.classList.remove("active");
 
-        if(link.getAttribute("href") === "#" + current){
-
+        if (
+            current &&
+            link.getAttribute("href") === "#" + current
+        ) {
             link.classList.add("active");
-
         }
 
     });
 
 });
+
 
 // =======================
 // CONTACT FORM EMAILJS
@@ -143,8 +154,10 @@ if (contactForm) {
 
         const submitBtn = contactForm.querySelector("button");
 
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = "Sending...";
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = "Sending...";
+        }
 
         emailjs.sendForm(
             "service_lhyq4rh",
@@ -158,8 +171,10 @@ if (contactForm) {
 
             contactForm.reset();
 
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = "Send Message";
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = "Send Message";
+            }
 
         })
 
@@ -169,14 +184,17 @@ if (contactForm) {
 
             alert("❌ Failed to send message. Please try again.");
 
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = "Send Message";
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = "Send Message";
+            }
 
         });
 
     });
 
 }
+
 
 // =======================
 // PROJECT IMAGE LIGHTBOX
@@ -188,36 +206,78 @@ const closeBtn = document.getElementById("close");
 
 const projectImages = document.querySelectorAll(".project-image img");
 
-projectImages.forEach((img) => {
+if (lightbox && lightboxImg && closeBtn) {
 
-    img.style.cursor = "pointer";
+    projectImages.forEach((img) => {
 
-    img.addEventListener("click", () => {
+        img.style.cursor = "pointer";
 
-        lightboxImg.src = img.src;
-lightboxImg.alt = img.alt;
-lightboxImg.style.display = "block";
-lightbox.style.display = "flex";
+        img.addEventListener("click", () => {
+
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+
+            lightboxImg.style.display = "block";
+            lightbox.style.display = "flex";
+
+        });
 
     });
 
-});
 
-closeBtn.addEventListener("click", () => {
-
-    lightbox.style.display = "none";
-lightboxImg.src = "";
-lightboxImg.style.display = "none";
-
-});
-
-lightbox.addEventListener("click", (e) => {
-
-    if (e.target === lightbox) {
+    closeBtn.addEventListener("click", () => {
 
         lightbox.style.display = "none";
 
+        lightboxImg.src = "";
+        lightboxImg.style.display = "none";
+
+    });
+
+
+    lightbox.addEventListener("click", (e) => {
+
+        if (e.target === lightbox) {
+
+            lightbox.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+// =======================
+// BACK TO TOP
+// =======================
+
+const backToTop = document.getElementById("backToTop");
+
+if (backToTop) {
+
+    function toggleBackToTop() {
+
+        if (window.scrollY > 300) {
+            backToTop.classList.add("show");
+        } else {
+            backToTop.classList.remove("show");
+        }
+
     }
 
-});
+    window.addEventListener("scroll", toggleBackToTop);
 
+    toggleBackToTop();
+
+
+    backToTop.addEventListener("click", () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+}
