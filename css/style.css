@@ -2368,3 +2368,12 @@ a:focus-visible, button:focus-visible { outline:2px solid #bba7ff; outline-offse
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation:none !important; transition:none !important; } }
 /* A solid translucent overlay keeps case-study text legible over the preview. */
 .project-hero .overlay { background:rgba(12,13,16,.92); }
+
+/* Typographic covers for projects without supplied screenshots. */
+.work-brand-art { aspect-ratio:16/9; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; background:#19191c; }
+.work-brand-monogram { font-size:clamp(34px,4vw,56px); font-weight:600; line-height:1.1; letter-spacing:-3px; color:#eee9df; }
+.work-brand-name { font-size:14px; font-weight:500; letter-spacing:1px; color:#e4e4e8; }
+.work-brand-caption { font-size:9px; text-transform:uppercase; letter-spacing:2px; color:#92929d; }
+.apex-preview .work-brand-art { background:#151d24; }
+.apex-preview .work-brand-monogram { color:#b7d5cf; letter-spacing:3px; }
+.work-link-note { font-size:10px; color:#92949f; }
